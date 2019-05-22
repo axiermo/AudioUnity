@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WwiseAdventureGameSource", "WwiseAdventureGameSource.csproj", "{B0C52901-A02C-5E5C-5E2B-40A87459B1A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WwiseAdventureGameSource.Plugins", "WwiseAdventureGameSource.Plugins.csproj", "{A03087BD-99C8-4557-7FDA-14A9E3435A45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WwiseAdventureGameSource.Editor.Plugins", "WwiseAdventureGameSource.Editor.Plugins.csproj", "{6DF0A0EF-A79C-872F-C1C3-6EF3AED78938}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WwiseAdventureGameSource.Editor", "WwiseAdventureGameSource.Editor.csproj", "{1BE6D425-7B54-C676-7F07-22A9A985A7A7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B0C52901-A02C-5E5C-5E2B-40A87459B1A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0C52901-A02C-5E5C-5E2B-40A87459B1A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0C52901-A02C-5E5C-5E2B-40A87459B1A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0C52901-A02C-5E5C-5E2B-40A87459B1A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A03087BD-99C8-4557-7FDA-14A9E3435A45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A03087BD-99C8-4557-7FDA-14A9E3435A45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A03087BD-99C8-4557-7FDA-14A9E3435A45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A03087BD-99C8-4557-7FDA-14A9E3435A45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DF0A0EF-A79C-872F-C1C3-6EF3AED78938}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DF0A0EF-A79C-872F-C1C3-6EF3AED78938}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DF0A0EF-A79C-872F-C1C3-6EF3AED78938}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DF0A0EF-A79C-872F-C1C3-6EF3AED78938}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BE6D425-7B54-C676-7F07-22A9A985A7A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BE6D425-7B54-C676-7F07-22A9A985A7A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BE6D425-7B54-C676-7F07-22A9A985A7A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BE6D425-7B54-C676-7F07-22A9A985A7A7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
