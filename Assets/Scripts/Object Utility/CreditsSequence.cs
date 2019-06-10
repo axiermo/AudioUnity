@@ -26,6 +26,7 @@ public class CreditsSequence : MonoBehaviour
 
     [Header("Other")]
     public GameObject FadeCanvas;
+    public AudioSource audioSource;
 
     #region private variables
     private Animator canvAnim;
@@ -108,13 +109,35 @@ public class CreditsSequence : MonoBehaviour
 
     public void SkipCredits()
     {
+        StartCoroutine(FadeOut(audioSource, 2f));
+
         canvAnim.speed = 5f;
         canvAnim.SetTrigger(fadeOutHash);
     }
 
     private void OnDestroy()
     {
-        // HINT: Stop playing the music for this credits sequence
         InputManager.OnMenuDown -= SkipCredits;
+    }
+
+    public static IEnumerator FadeOut(AudioSource audioSource, float FadeTime)
+    {
+        float startVolume = audioSource.volume;
+        while (audioSource.volume > 0)
+        {
+            audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
+            yield return null;
+        }
+        audioSource.Stop();
+    }
+    public static IEnumerator FadeIn(AudioSource audioSource, float FadeTime)
+    {
+        audioSource.Play();
+        audioSource.volume = 0f;
+        while (audioSource.volume < 1)
+        {
+            audioSource.volume += Time.deltaTime / FadeTime;
+            yield return null;
+        }
     }
 }
