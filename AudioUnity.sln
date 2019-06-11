@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioUnity", "Assembly-CSharp.csproj", "{56375206-E0DE-9881-399C-E1559C9315D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{56375206-E0DE-9881-399C-E1559C9315D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioUnity", "Assembly-CSharp-firstpass.csproj", "{2F6BBE0A-0D79-2C58-ECD0-D20C0295C926}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-firstpass", "Assembly-CSharp-firstpass.csproj", "{2F6BBE0A-0D79-2C58-ECD0-D20C0295C926}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioUnity", "Assembly-CSharp-Editor-firstpass.csproj", "{8C7F2751-776A-FEF9-1593-0FAD91CAA34D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor-firstpass", "Assembly-CSharp-Editor-firstpass.csproj", "{8C7F2751-776A-FEF9-1593-0FAD91CAA34D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioUnity", "Assembly-CSharp-Editor.csproj", "{EB02DDB8-8DBF-E0F7-EE8F-89599251E168}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{EB02DDB8-8DBF-E0F7-EE8F-89599251E168}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

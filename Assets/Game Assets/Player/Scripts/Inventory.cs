@@ -11,8 +11,15 @@ using System.Linq;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+[RequireComponent(typeof(AudioSource))]
 public class Inventory : MonoBehaviour
 {
+    public AudioClip openMenu;
+    public AudioClip closeMenu;
+    public AudioClip selectMenu;
+
+    AudioSource audiosource;
+
     public Canvas ThisCanvas;
     public CanvasGroup canvasGroup;
 
@@ -73,6 +80,10 @@ public class Inventory : MonoBehaviour
     private Image MarkerImage_Row3;
     #endregion
 
+     void Start()
+    {
+        audiosource = GetComponent<AudioSource>();
+    }
     private void OnDestroy()
     {
         InputManager.OnInventoryDown -= OpenInventory;
@@ -707,6 +718,7 @@ public class Inventory : MonoBehaviour
         {
             canvasGroup.interactable = true;
             // HINT: You might want to play the inventory opened sound here
+            audiosource.PlayOneShot(openMenu, 0.7F);
             InventoryIsOut = true;
             if (EventSystem.current != null)
             {
@@ -729,6 +741,7 @@ public class Inventory : MonoBehaviour
         {
             canvasGroup.interactable = false;
             // HINT: You might want to play the inventory closed sound here
+            audiosource.PlayOneShot(closeMenu, 0.7F);
             InventoryIsOut = false;
             GameManager.Instance.gameSpeedHandler.UnPauseGameSpeed(gameObject.GetInstanceID());
 
@@ -785,7 +798,7 @@ public class Inventory : MonoBehaviour
     public void ButtonIncrement(int layer)
     {
         // HINT: You may want to play the inventory select sound here
-
+        audiosource.PlayOneShot(selectMenu, 0.7F);
         if (Panel.activeInHierarchy && hasShown)
         {
             if (layer == 0)
@@ -809,6 +822,7 @@ public class Inventory : MonoBehaviour
     public void InversedIncrement(int layer)
     {
         // HINT: You may want to play the inventory select sound here
+        audiosource.PlayOneShot(selectMenu, 0.7F);
         if (Panel.activeInHierarchy && hasShown)
         {
             if (layer == 0)
