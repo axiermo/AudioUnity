@@ -14,9 +14,9 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(AudioSource))]
 public class Inventory : MonoBehaviour
 {
-    public AudioClip openMenu;
-    public AudioClip closeMenu;
-    public AudioClip selectMenu;
+    public AudioClip openInvent;
+    public AudioClip closeInvent;
+    public AudioClip selectInvent;
 
     AudioSource audiosource;
 
@@ -718,7 +718,7 @@ public class Inventory : MonoBehaviour
         {
             canvasGroup.interactable = true;
             // HINT: You might want to play the inventory opened sound here
-            audiosource.PlayOneShot(openMenu, 0.7F);
+            audiosource.PlayOneShot(openInvent, 0.7F);
             InventoryIsOut = true;
             if (EventSystem.current != null)
             {
@@ -741,7 +741,7 @@ public class Inventory : MonoBehaviour
         {
             canvasGroup.interactable = false;
             // HINT: You might want to play the inventory closed sound here
-            audiosource.PlayOneShot(closeMenu, 0.7F);
+            audiosource.PlayOneShot(closeInvent, 0.7F);
             InventoryIsOut = false;
             GameManager.Instance.gameSpeedHandler.UnPauseGameSpeed(gameObject.GetInstanceID());
 
@@ -798,7 +798,7 @@ public class Inventory : MonoBehaviour
     public void ButtonIncrement(int layer)
     {
         // HINT: You may want to play the inventory select sound here
-        audiosource.PlayOneShot(selectMenu, 0.7F);
+        audiosource.PlayOneShot(selectInvent, 0.7F);
         if (Panel.activeInHierarchy && hasShown)
         {
             if (layer == 0)
@@ -822,7 +822,7 @@ public class Inventory : MonoBehaviour
     public void InversedIncrement(int layer)
     {
         // HINT: You may want to play the inventory select sound here
-        audiosource.PlayOneShot(selectMenu, 0.7F);
+        audiosource.PlayOneShot(selectInvent, 0.7F);
         if (Panel.activeInHierarchy && hasShown)
         {
             if (layer == 0)
