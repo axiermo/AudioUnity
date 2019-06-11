@@ -34,11 +34,16 @@ public class QuestUpdatedVisuals : MonoBehaviour
     private readonly int showTrigger = Animator.StringToHash("Show");
     private readonly int hideTrigger = Animator.StringToHash("Hide");
     #endregion
+    public AudioClip openQuest;
+    public AudioClip closeQuest;
+
+
+    AudioSource audiosource;
 
     public void OnEnable()
     {
         questGiver.OnNewQuest += UpdateQuestInfo;
-
+        audiosource = GetComponent<AudioSource>();
     }
 
     public void OnDisable()
@@ -86,9 +91,10 @@ public class QuestUpdatedVisuals : MonoBehaviour
     private IEnumerator ShowAndHide()
     {
         ShowQuestRoll();
-
+        audiosource.PlayOneShot(openQuest, 0.7F);
         yield return new WaitForSeconds(ShowDuration);
 
         HideQuestRoll();
+        audiosource.PlayOneShot(closeQuest, 0.7F);
     }
 }

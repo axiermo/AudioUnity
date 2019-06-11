@@ -11,7 +11,7 @@ public delegate void QuestUpdate();
 public delegate void QuestBarUpdate();
 public delegate void QuestItemUpdate();
 public delegate void QuestGet();
-
+[RequireComponent(typeof(AudioSource))]
 public class QuestManager : Singleton<QuestManager>
 {
     [Header("Dialogue")]
@@ -54,6 +54,14 @@ public class QuestManager : Singleton<QuestManager>
 
     public bool showQuestBarInfo = false;
 
+    public AudioClip QuestRoll;
+
+
+    AudioSource audiosource;
+    private void Start()
+    {
+        audiosource = GetComponent<AudioSource>();
+    }
     void Awake()
     {
         QuestItems = new List<QuestItemInfo>();
@@ -64,6 +72,7 @@ public class QuestManager : Singleton<QuestManager>
         if (OnQuestBarUpdate != null)
         {
             OnQuestBarUpdate();
+            
         }
         Instance.UpdateRTPC();
     }
@@ -97,5 +106,6 @@ public class QuestManager : Singleton<QuestManager>
         float percentage = ((float)mainQuestProgress / (float)AmountOfQuests) * 100f;
         QuestProgressRTPC = percentage;
         // HINT: Progress RPTC changed, do you need to update anything here?
+        audiosource.PlayOneShot(QuestRoll, 0.7F); // Linked with QuestUpdatedVisuals.cs
     }
 }

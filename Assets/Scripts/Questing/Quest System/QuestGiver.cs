@@ -10,6 +10,8 @@ using UnityEngine;
 
 namespace QuestSystem
 {
+
+
     public delegate void QuestGiverEvent(QuestGiver questGiver);
     public class QuestGiver : InteractableNPC
     {
@@ -32,11 +34,19 @@ namespace QuestSystem
         private IEnumerator interactionRoutine;
         #endregion
 
+        
+        public AudioClip QuestCompleted;
+        public AudioClip QuestCompleted2;
+
+
+        AudioSource audiosource;
+
         private void Start()
         {
             if (StartQuestLineOnStart)
             {
                 InitializeQuest(currentQuestIdx);
+                audiosource = GetComponent<AudioSource>();
             }
         }
 
@@ -61,6 +71,7 @@ namespace QuestSystem
             QuestlineProgressionRTPC = GetNormalizedQuestlineProgress() * 100f;
             // HINT: Questline progression RTPC changed, does this affect to any sound?
             initializingNewQuest = false;
+            
         }
 
         public Quest GetCurrentQuest()
@@ -88,14 +99,18 @@ namespace QuestSystem
             {
                 // HINT: Questline complete, you may want to play a sound here
                 InitializeQuest(currentQuestIdx);
+                audiosource.PlayOneShot(QuestCompleted, 0.7F);
             }
+           
             else
             {
                 // HINT: Questline complete, you may want to play a sound here
                 if (OnQuestlineComplete != null)
                 {
                     OnQuestlineComplete(this);
+                    
                 }
+               
             }
         }
 
@@ -155,6 +170,7 @@ namespace QuestSystem
             if (OnQuestlineForcedChangeEnded != null)
             {
                 OnQuestlineForcedChangeEnded(this);
+                audiosource.PlayOneShot(QuestCompleted2, 0.7F);
             }
         }
 
