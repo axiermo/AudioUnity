@@ -231,22 +231,31 @@ public class GameManager : Singleton<GameManager>
     void UpdateMusic()
     {
         AudioSource curr = GetComponent<AudioSource>();
-        AudioSource zone = CurrentZones[0].GetComponent<AudioSource>();
 
-        if (CurrentZones.Count > 0)
+        if (curr != null)
         {
-            if(dayTime) {
-                curr.clip = zone.clip;
-                curr.Play();
+            if (CurrentZones.Count > 0)
+            {
+                AudioSource zone = CurrentZones[0].GetComponent<AudioSource>();
+
+                if (zone != null)
+                {
+                    if (dayTime)
+                    {
+                        curr.clip = zone.clip;
+                        curr.Play();
+                    }
+                    else
+                    {
+                        curr.clip = night_clip;
+                        curr.Play();
+                    }
+                }
             }
-            else {
-                curr.clip = night_clip;
-                curr.Play();
+            else
+            {
+                curr.Stop();
             }
-        }
-        else
-        {
-            curr.Stop();
         }
     }
 
