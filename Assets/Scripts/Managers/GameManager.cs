@@ -55,6 +55,7 @@ public class GameManager : Singleton<GameManager>
 
     #region private variables
     private bool overrideEnemyRTPCs = false;
+    private AudioClip night_clip;
 
     //Camera Effects
     private Camera ActiveCamera;
@@ -111,7 +112,8 @@ public class GameManager : Singleton<GameManager>
 
         //AkCallbackType CallbackType = AkCallbackType.AK_MusicSyncUserCue;
         //MusicEvent.Post(gameObject, (uint)CallbackType, CallBackFunction);
-        // HINT: Place to update game music according to region and daylight variables
+
+        night_clip = this.GetComponent<AudioSource>().clip;
 
         StartCoroutine(DistanceToEnemies());
         // HINT: Enemy music event?
@@ -160,6 +162,7 @@ public class GameManager : Singleton<GameManager>
         {
             DayNightCall(dayTime);
             lastDayTime = dayTime;
+            UpdateMusic();
         }
     }
 
@@ -227,14 +230,23 @@ public class GameManager : Singleton<GameManager>
 
     void UpdateMusic()
     {
+        AudioSource curr = GetComponent<AudioSource>();
+        AudioSource zone = CurrentZones[0].GetComponent<AudioSource>();
+
         if (CurrentZones.Count > 0)
         {
-            //CurrentZones[0].MusicState.SetValue();
-            // HINT: Place to update game music according to region and daylight variables
+            if(dayTime) {
+                curr.clip = zone.clip;
+                curr.Play();
+            }
+            else {
+                curr.clip = night_clip;
+                curr.Play();
+            }
         }
         else
         {
-            // HINT: Place to update game music according to region and daylight variables
+            curr.Stop();
         }
     }
 
