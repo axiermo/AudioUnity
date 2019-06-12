@@ -27,6 +27,11 @@ public class EvilHeadAI : Creature
     private readonly int deathHash = Animator.StringToHash("Death");
     #endregion
 
+    public AudioClip charge;
+    public AudioClip bite;
+
+    AudioSource audiosource;
+
     private void SetMovementSpeed(float speed) {
         MovementRTPC = speed;
     }
@@ -41,8 +46,11 @@ public class EvilHeadAI : Creature
 
     public override void Start(){
 		base.Start();
+        audiosource = GetComponent<AudioSource>();
+        audiosource.Play();
+        audiosource.loop = true;
         // HINT: Hover sound start here
-	}
+    }
 
     public override void OnSpotting()
     {
@@ -113,7 +121,7 @@ public class EvilHeadAI : Creature
     {
         //print(Time.realtimeSinceStartup + ": ChargeTowardsPlayer");
         // HINT: Charge started, a telegrpah sound could be useful here
-
+        audiosource.PlayOneShot(charge, 0.7F);
         Vector3 currentPosition = transform.position;
         Vector3 destination = targetLocation + ((targetLocation) - currentPosition).normalized * 2f;
 
@@ -154,12 +162,13 @@ public class EvilHeadAI : Creature
         ReenableMovement();
     }
 
+   
     public void Explode()
     {
         SetMovementSpeed(0f);
         //print(Time.realtimeSinceStartup + ": Explode");
         // HiNT: We should stop hover sound at this point
-
+        audiosource.Stop();
         GameObject fx = (GameObject)Instantiate(deathFX, transform.position, Quaternion.identity);
         Destroy(fx, 5f);
 
@@ -184,5 +193,6 @@ public class EvilHeadAI : Creature
     public void PlayBiteSound()
     {
         // HINT: Looks like a good place to play the bite sound
+        audiosource.PlayOneShot(bite, 0.7F);
     }
 }

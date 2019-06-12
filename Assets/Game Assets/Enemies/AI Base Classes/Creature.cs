@@ -914,6 +914,7 @@ public abstract class Creature : MonoBehaviour, IDamageable //TODO: This class i
 
     protected virtual void PlayCreatureDeathSound()
     {
+        
         // HINT: The creature is dying, you might want to play the die sound here
     }
 

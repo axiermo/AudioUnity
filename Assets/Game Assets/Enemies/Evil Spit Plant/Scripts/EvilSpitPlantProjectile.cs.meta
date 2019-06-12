@@ -1,10 +1,15 @@
 fileFormatVersion: 2
 guid: a10234c3d4fb144c0b9eee30861988b1
-timeCreated: 1475936487
-licenseType: Free
 MonoImporter:
+  externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - explodeParticles: {instanceID: 0}
+  - deflectParticles: {instanceID: 0}
+  - parent: {instanceID: 0}
+  - fly: {fileID: 8300000, guid: b5d51c252dae71943be8b1cc384f6b6d, type: 3}
+  - hit: {fileID: 8300000, guid: b8633fadde9661b49a330e471b07540c, type: 3}
+  - miss: {fileID: 8300000, guid: 7618cc1bf3ae07847a3de42d6d4b16d8, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

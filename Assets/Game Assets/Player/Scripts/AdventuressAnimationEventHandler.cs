@@ -89,7 +89,7 @@ public class AdventuressAnimationEventHandler : MonoBehaviour
                         particlePosition = foot_L.transform.position;
                         FootstepParticles(particlePosition);
                         AudioSource audioSource = GetComponent<AudioSource>();
-                        audioSource.PlayOneShot(leftFootStep, 0.7F);
+                        audioSource.PlayOneShot(leftFootStep, 1.5F);
                     }
                 }
                 else
@@ -100,7 +100,7 @@ public class AdventuressAnimationEventHandler : MonoBehaviour
                         particlePosition = foot_R.transform.position;
                         FootstepParticles(particlePosition);
                         AudioSource audioSource = GetComponent<AudioSource>();
-                        audioSource.PlayOneShot(rightFootStep, 0.7F);
+                        audioSource.PlayOneShot(rightFootStep, 1.5F);
                     }
                 }
             }

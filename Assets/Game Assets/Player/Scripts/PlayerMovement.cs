@@ -26,6 +26,14 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundCheckMask;
 
 
+    public AudioClip footsteps;
+    public AudioClip landing;
+    public AudioClip sprint;
+
+
+    AudioSource audiosource;
+
+
     public List<GameObject> movementPausers = new List<GameObject>();
     [HideInInspector]
 
@@ -63,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
         InputManager.OnMoveUp += OnMoveUp;
         InputManager.OnSprint += Sprint;
         InputManager.OnSprintUp += StopSprint;
-
+        audiosource = GetComponent<AudioSource>();
         //initialize variables
         playerBody = PlayerManager.
             Instance.
@@ -105,6 +113,7 @@ public class PlayerMovement : MonoBehaviour
                     animator.SetBool(inAirHash, false);
                 }
                 //TODO: Play landing sound here!
+                audiosource.PlayOneShot(landing, 0.7F);
                 PlayerManager.Instance.playerCollider.material = frictionPhysMat;
                 firstTimeLand = false;
             }
@@ -158,6 +167,7 @@ public class PlayerMovement : MonoBehaviour
         if (maxSpeed + sprintAdd < sprintSpeed)
         {
             sprintAdd += Time.deltaTime * 100;
+            
         }
         else if (maxSpeed + sprintAdd > sprintSpeed)
         {
@@ -167,6 +177,7 @@ public class PlayerMovement : MonoBehaviour
         if (!PlayerManager.Instance.isSprinting)
         {
             PlayerManager.Instance.isSprinting = true;
+            
         }
     }
 

@@ -23,6 +23,10 @@ public class EvilSpitPlantProjectile : MonoBehaviour
 
     [HideInInspector]
     public GameObject parent;
+    AudioSource audiosource;
+    public AudioClip fly;
+    public AudioClip hit;
+    public AudioClip miss;
 
     #region private variables
     private Rigidbody rb;
@@ -33,6 +37,7 @@ public class EvilSpitPlantProjectile : MonoBehaviour
 
     void OnEnable()
     {
+        audiosource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
         PlayerCamera.OnCameraEventStart += ForceExplode;
 
@@ -48,6 +53,8 @@ public class EvilSpitPlantProjectile : MonoBehaviour
     IEnumerator MoveSpitBullet()
     {
         // HINT: Spit bullet started moving, you might want to start playing its continuous sound here
+        audiosource.Play();
+        audiosource.loop = true;
         while (time < duration)
         {
             rb.velocity = transform.forward * speed;
@@ -120,7 +127,7 @@ public class EvilSpitPlantProjectile : MonoBehaviour
             isExploding = true;
 
             // HINT: Spit bullet stopped, you might want to stop playing its continuous sound here
-
+            audiosource.Stop();
             GetComponent<Collider>().enabled = false;
             time = duration;
             rb.velocity = Vector3.zero;
@@ -130,11 +137,12 @@ public class EvilSpitPlantProjectile : MonoBehaviour
 
             if (hitSomething)
             {
-                // HINT: Explosion did hit something, you may want to play the explosion hit sound here
+                audiosource.PlayOneShot(hit, 0.7F); // HINT: Explosion did hit something, you may want to play the explosion hit sound here
             }
             else
             {
                 // HINT: Explosion didn't hit something, you may want to play the explosion miss sound here
+                audiosource.PlayOneShot(miss, 0.7F);
             }
 
             Destroy(go, 5f);

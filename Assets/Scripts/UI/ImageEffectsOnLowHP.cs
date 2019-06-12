@@ -1,4 +1,4 @@
-////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////
 //
 // Copyright (c) 2018 Audiokinetic Inc. / All Rights Reserved
 //
@@ -27,6 +27,14 @@ public class ImageEffectsOnLowHP : MonoBehaviour, IDamageable
 
     private Camera mainCam;
 
+    public AudioClip hit;
+
+    AudioSource audiosource;
+
+    void Start()
+    {
+        audiosource = GetComponent<AudioSource>();
+    }
     void OnEnable()
     {
         mainCam = Camera.main;
@@ -66,6 +74,7 @@ public class ImageEffectsOnLowHP : MonoBehaviour, IDamageable
     public void OnDamage(Attack a)
     {
         PlayerManager.Instance.CamShake(new PlayerCamera.CameraShake(a.damage / 100f, a.damage / 100f));
+        audiosource.PlayOneShot(hit, 0.7F);
     }
 
     void Update()
